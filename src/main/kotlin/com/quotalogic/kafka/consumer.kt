@@ -22,7 +22,7 @@ private val logger = KotlinLogging.logger {}
 class Consumer<K, V>(private val consumer: KafkaConsumer<K, V>, topic: String) : Closeable, Runnable {
     private val closed: AtomicBoolean = AtomicBoolean(false)
     private var finished = CountDownLatch(1)
-    val dayOffService = DayOffService()
+    private val dayOffService = DayOffService()
 
     init {
         consumer.subscribe(listOf(topic))
@@ -34,8 +34,12 @@ class Consumer<K, V>(private val consumer: KafkaConsumer<K, V>, topic: String) :
                 val records = consumer.poll(Duration.of(1000, ChronoUnit.MILLIS))
                 for (record in records) {
                     logger.info { "topic = ${record.topic()}, partition = ${record.partition()}, offset = ${record.offset()}, key = ${record.key()}, value = ${record.value()}" }
+                    val date = LocalDate.parse(record.value().toString())
+                    val email = record.key().toString()
+
                     runBlocking {
-                        dayOffService.addDayOff(record.key().toString(), LocalDate.parse(record.value().toString()))
+                        dayOffService.addDayOff(email, date)
+                        logger.info { "Booked $date for an employee with email: $email" }
                     }
                 }
                 if (!records.isEmpty) {

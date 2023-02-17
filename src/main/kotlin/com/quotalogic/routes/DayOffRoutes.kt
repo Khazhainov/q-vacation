@@ -7,8 +7,9 @@ import io.ktor.server.application.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import mu.KotlinLogging
 
-//private val logger = KotlinLogging.logger {}
+private val logger = KotlinLogging.logger {}
 
 fun Route.dayOffRouting(dayOffService: DayOffService) {
     route("/day-off") {
@@ -17,10 +18,10 @@ fun Route.dayOffRouting(dayOffService: DayOffService) {
             val res = dayOffService.addDayOff(dayOff.employeeId, dayOff.date)
             if (res.first) {
                 call.respond(HttpStatusCode.Created, res.second)
-                //logger.info { "Booked ${dayOff.date} for an employee with email: ${dayOff.employeeId}" }
+                logger.info { "Booked ${dayOff.date} for an employee with email: ${dayOff.employeeId}" }
             } else {
                 call.respond(HttpStatusCode.BadRequest, res.second)
-                //logger.error { "Bad request. Reason: ${res.second}" }
+                logger.error { "Bad request. Reason: ${res.second}" }
             }
         }
     }
