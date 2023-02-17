@@ -16,7 +16,6 @@ import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicBoolean
 
-
 private val logger = KotlinLogging.logger {}
 
 class Consumer<K, V>(private val consumer: KafkaConsumer<K, V>, topic: String) : Closeable, Runnable {
