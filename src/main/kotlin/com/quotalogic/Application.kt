@@ -13,7 +13,7 @@ fun main() {
 
 fun Application.module() {
     install(BackgroundJobPlugin) {
-        name = "Kafka-Consumer-Job"
+        name = "DayOff-Consumer-Job"
         job = buildConsumer<String, String>()
     }
     configureSerialization()
