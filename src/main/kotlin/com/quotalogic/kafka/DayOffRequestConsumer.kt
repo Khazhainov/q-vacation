@@ -54,7 +54,7 @@ class Consumer<K, V>(private val consumer: KafkaConsumer<K, V>, topic: String) :
             logger.info { "Finish consuming" }
         } catch (e: Throwable) {
             when (e) {
-                is WakeupException -> logger.info { "com.quotalogic.kafka.Consumer waked up" }
+                is WakeupException -> logger.info { "Consumer waked up" }
                 else -> logger.error(e) { "Polling failed" }
             }
         } finally {
@@ -62,7 +62,7 @@ class Consumer<K, V>(private val consumer: KafkaConsumer<K, V>, topic: String) :
             consumer.commitSync()
             consumer.close()
             finished.countDown()
-            logger.info { "com.quotalogic.kafka.Consumer successfully closed" }
+            logger.info { "Consumer successfully closed" }
         }
     }
 
