@@ -31,36 +31,42 @@ If the day is already booked, the app will ignore the booking request.
 
 1) Endpoint: GET `/employee/date/{date?}`
 
-Description:
+**Description:**
+
 This endpoint is used to get information about the employee who has a day off on a particular date. The date should be provided in the format "YYYY-MM-DD".
 If an employee has a day off on the specified date, their information will be returned in the response.
 If no employee has a day off on the specified date, a message indicating that the date is free to book will be returned.
 
-Request Parameters:
+**Request Parameters:**
 
 `date` (string): the date for which to retrieve employee information in "YYYY-MM-DD" format.
 
-Response. The endpoint returns a JSON payload with the following parameters:
+**Response. The endpoint returns a JSON payload with the following parameters:**
 
 `email` (string): the email address of the employee. Also has role as ID of Employee.
+
 `firstName` (string): first name of the employee.
+
 `lastName` (string): last name of the employee.
 
 2) Endpoint: POST `/day-off`
 
-Description:
+**Description:**
+
 This endpoint is used to add a day off request for an employee. The request should include the employee's ID and the date they would like to take off. 
 If the request is successful, a confirmation response will be returned along with an HTTP status code of 201 (Created). 
 If the request is unsuccessful, an error message will be returned along with an HTTP status code of 400 (Bad Request).
 
-Request. The endpoint accepts a JSON payload with the following parameters:
+**Request. The endpoint accepts a JSON payload with the following parameters:**
 
 `employeeId` (string): the unique ID (email) of the employee making the day off request.
+
 `date` (string): the date the employee would like to take off in "YYYY-MM-DD" format.
 
-Response. The endpoint returns a JSON payload with the following parameters:
+**Response. The endpoint returns a JSON payload with the following parameters:**
 
 `success` (boolean): whether the request was successful or not.
+
 `message` (string): a message indicating the reason for success or failure.
 
 ### Kafka:
