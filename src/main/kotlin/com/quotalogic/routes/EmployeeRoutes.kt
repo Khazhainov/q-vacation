@@ -7,6 +7,8 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import java.time.LocalDate
 
+//TODO Add logger
+//TODO Validate user's input
 fun Route.employeeRouting(employeeService: EmployeeService) {
 
     route("/employee") {

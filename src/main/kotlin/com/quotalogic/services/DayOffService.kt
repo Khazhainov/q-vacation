@@ -10,7 +10,7 @@ import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransacti
 import java.time.LocalDate
 
 private val logger = KotlinLogging.logger {}
-
+//TODO Add validation for user inputs
 class DayOffService {
 
     suspend fun <T> dbQuery(block: suspend () -> T): T =

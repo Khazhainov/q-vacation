@@ -17,6 +17,9 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
 
+//TODO TEST routers for respond code
+//TODO TEST invalid user's inputs
+//TODO Add more data to test
 class ApplicationTest {
 
     private val employeeService = EmployeeService()

@@ -7,7 +7,7 @@ import kotlinx.coroutines.Dispatchers
 import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
 import java.time.LocalDate
-
+//TODO Add validation for user's input
 class EmployeeService {
 
     suspend fun <T> dbQuery(block: suspend () -> T): T =

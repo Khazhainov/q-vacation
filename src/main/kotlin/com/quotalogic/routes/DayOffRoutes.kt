@@ -10,7 +10,7 @@ import io.ktor.server.routing.*
 import mu.KotlinLogging
 
 private val logger = KotlinLogging.logger {}
-
+//TODO Validate user's input
 fun Route.dayOffRouting(dayOffService: DayOffService) {
     route("/day-off") {
         post {

@@ -18,6 +18,7 @@ import java.util.concurrent.atomic.AtomicBoolean
 
 private val logger = KotlinLogging.logger {}
 
+//TODO Refactor Consumer - change finally, change logging policy,
 class Consumer<K, V>(private val consumer: KafkaConsumer<K, V>, topic: String) : Closeable, Runnable {
     private val closed: AtomicBoolean = AtomicBoolean(false)
     private var finished = CountDownLatch(1)
